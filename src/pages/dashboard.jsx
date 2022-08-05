@@ -6,7 +6,6 @@ import Cards from '../components/cards'
 import API_NAME from '../api/constants'
 import styles from '../app.module.css';
 import Grid from '@material-ui/core/Grid';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import apiCall from '../api/api';
 
 const Dashboard = () => {
@@ -32,21 +31,19 @@ const Dashboard = () => {
     return (<div>
         <Header/>
             <div className={styles.main}>
-                {bucket.length ? (
-                    <Grid className={styles.gridContainer} container spacing={3} >
-                        {bucket.map(api => (
-                            <div key={api.apiName}>
-                                <Cards 
-                                    success={api.success} 
-                                    apiName={api.apiName} 
-                                    message={api.message} 
-                                    hostName={api.hostName}
-                                    time={api.time}
-                                />
-                            </div>
-                        ))}
-                    </Grid>
-                ) : (<CircularProgress />)}
+                <Grid className={styles.gridContainer} container spacing={3} >
+                    {bucket.map(api => (
+                        <div key={api.apiName}>
+                            <Cards 
+                                success={api.success} 
+                                apiName={api.apiName} 
+                                message={api.message} 
+                                hostName={api.hostName}
+                                time={api.time}
+                            />
+                        </div>
+                    ))}
+                </Grid>
             </div>
     </div>)
 }
